@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Flea Market</title>
+
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/client.js"></script>
+    <script type="text/javascript" src="scripts/factories/fleaMarketService.js"></script>
+    <script type="text/javascript" src="scripts/controllers/bank.js"></script>
+    <script type="text/javascript" src="scripts/controllers/buy.js"></script>
+    <script type="text/javascript" src="scripts/controllers/sell.js"></script>
+
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h1>Flea Market</h1>
+      <div class = "account" ng-controller="BankController as account">
+         Account balance: ${{account.accountBalance.amount}}
+       </div>
+    </div>
+
+    <h2>Welcome to the World's Best Flea Market</h2>
+
+
+    <div ng-controller = "SellController as sell" >
+      <h2>Fruit Basket</h2>
+      <div ng-repeat="item in sell.fruitObject.items">
+        <div class="item well col-md-3">
+          <img class="image" ng-src="{{item.image}}" />
+          <p ng-model = "item.name">Name: {{item.name}}</p>
+          <p ng-model = "item.quanity">Quantity: {{item.quantity}}</p>
+          <p ng-model = "item.currentPrice">Current Price: {{item.currentPrice | currency}}</p>
+          <p ng-model = "item.averagePrice">Average Price: {{item.averagePrice | currency}}</p>
+          <button ng-click = "sell.buyFunc(item)" type="button" name="buy" class = "btn btn-primary">Buy</button>
+          <button ng-click = "sell.sellItem(item)" type="button" name="sell" class = "btn btn-primary">Sell</button>
+        </div>
+      </div>
+      <h2>Collectables</h2>
+      <div ng-repeat="item in sell.collectableObject.items">
+        <div class="item well col-md-3">
+          <img class="image" ng-src="{{item.image}}" />
+          <p ng-model = "item.name">Name: {{item.name}}</p>
+          <p ng-model = "item.quanity">Quantity: {{item.quantity}}</p>
+          <p ng-model = "item.currentPrice">Current Price: {{item.currentPrice | currency}}</p>
+          <p ng-model = "item.averagePrice">Average Price: {{item.averagePrice | currency}}</p>
+          <button ng-click = "sell.buyFunc(item)" type="button" name="buy" class = "btn btn-primary">Buy</button>
+          <button ng-click = "sell.sellItem(item)" type="button" name="sell" class = "btn btn-primary">Sell</button>
+        </div>
+      </div>
+      <h2>Electronics</h2>
+      <div ng-repeat="item in sell.electronicObject.items">
+        <div class="item well col-md-3">
+          <img class="image" ng-src="{{item.image}}" />
+          <p ng-model = "item.name">Name: {{item.name}}</p>
+          <p ng-model = "item.quanity">Quantity: {{item.quantity}}</p>
+          <p ng-model = "item.currentPrice">Current Price: {{item.currentPrice | currency}}</p>
+          <p ng-model = "item.averagePrice">Average Price: {{item.averagePrice | currency}}</p>
+          <button ng-click = "sell.buyFunc(item)" type="button" name="buy" class = "btn btn-primary">Buy</button>
+          <button ng-click = "sell.sellItem(item)" type="button" name="sell" class = "btn btn-primary">Sell</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
